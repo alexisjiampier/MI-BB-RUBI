@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una sorpresa especial para Karen Rubit ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Pantalla de bienvenida -->
+    <div class="screen welcome-screen active" id="welcomeScreen">
+        <div class="container">
+            <h1 class="welcome-title" onclick="createSparkles(event)">💝 Una sorpresa especial 💝</h1>
+            <p style="font-size: 1.3rem; margin-bottom: 40px; opacity: 0.8;">
+                Alguien muy especial tiene algo que decirte...
+            </p>
+            <button class="start-btn" onclick="nextScreen('storyScreen')">
+                Comenzar la sorpresa ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- Pantalla de historia -->
+    <div class="screen story-screen" id="storyScreen">
+        <div class="container">
+            <div class="story-content">
+                <h2 style="font-size: 2.5rem; margin-bottom: 40px; color: #ff6b9d;">
+                    Querida Karen Rubit ❤️
+                </h2>
+                
+                <div class="story-text" id="story1">
+                    Desde el primer día que te vi, supe que eras especial. Tu sonrisa ilumina cualquier lugar donde estés, y tu risa es la melodía más hermosa que he escuchado.
+                </div>
+                
+                <div class="story-text" id="story2">
+                    Cada momento contigo se siente como un sueño. Eres inteligente, divertida, hermosa por dentro y por fuera, y tienes esa manera única de hacer que todo sea mejor.
+                </div>
+                
+                <div class="story-text" id="story3">
+                    He pensado mucho en esto, y no puedo imaginar mi vida sin ti a mi lado. Quiero compartir contigo todos mis sueños, mis aventuras, y crear juntos los recuerdos más hermosos.
+                </div>
+
+                <button class="next-btn" onclick="showStoryTexts()">Continuar leyendo 💕</button>
+                <button class="next-btn" onclick="nextScreen('questionScreen')" id="questionBtn" style="display: none;">
+                    Hay algo muy importante que preguntarte... 💕
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de recuerdos -->
+    <div class="screen memories-screen" id="memoriesScreen">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px; color: #ff6b9d;">
+                Momentos que atesoro 💫
+            </h2>
+            
+            <div class="memory-card" onclick="animateCard(this)">
+                <div class="memory-emoji">😍</div>
+                <div class="memory-title">Primera vez que te vi</div>
+                <div class="memory-text">Mi corazón se saltó un latido y supe que algo había cambiado para siempre en mi vida.</div>
+            </div>
+
+            <div class="memory-card" onclick="animateCard(this)">
+                <div class="memory-emoji">💬</div>
+                <div class="memory-title">Nuestras conversaciones</div>
+                <div class="memory-text">Podríamos hablar durante horas y nunca me aburro. Eres increíblemente interesante y divertida.</div>
+            </div>
+
+            <div class="memory-card" onclick="animateCard(this)">
+                <div class="memory-emoji">🌟</div>
+                <div class="memory-title">Tu manera de ser</div>
+                <div class="memory-text">Eres auténtica, bondadosa y tienes esa luz especial que hace que todos a tu alrededor se sientan mejor.</div>
+            </div>
+
+            <button class="next-btn" onclick="nextScreen('questionScreen')" id="questionBtn" style="display: none;">
+                Hay algo importante que preguntarte... 💕
+            </button>
+        </div>
+    </div>
+
+    <!-- Pantalla de la pregunta -->
+    <div class="screen question-screen" id="questionScreen">
+        <div class="heart-big"></div>
+        <div class="container">
+            <h2 class="question-title">Karen Rubit... 💕</h2>
+            <p style="font-size: 1.6rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); color: #ffb3ba;">
+                Después de todo lo que hemos compartido,<br>
+                y soñando con todo lo que podríamos vivir juntos...
+            </p>
+            <p style="font-size: 1.4rem; margin-bottom: 30px; color: #ff6b9d; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);">
+                Has llenado mi vida de colores que no sabía que existían
+            </p>
+            <div style="background: rgba(0,0,0,0.7); padding: 30px; border-radius: 25px; margin: 30px 0; border: 3px solid #ff1744; box-shadow: 0 0 30px rgba(255, 23, 68, 0.5); backdrop-filter: blur(10px);">
+                <p id="mainQuestion" style="font-size: 3rem; margin-bottom: 15px; color: #ffffff; font-weight: bold; text-shadow: 3px 3px 6px rgba(0,0,0,0.8); animation: glow-text 2s infinite alternate, bounce 3s infinite;">
+                    ¿Quieres ser mi novia? 💖
+                </p>
+                <p style="font-size: 1.3rem; color: #ffb3ba; font-style: italic; opacity: 0; animation: fadeInUp 2s ease-out 1s both;">
+                    ¿Quieres construir conmigo la historia de amor más hermosa? ✨
+                </p>
+            </div>
+            
+            <div class="answer-buttons">
+                <button class="answer-btn btn-yes" onclick="showCelebration()" style="animation: pulse 2s infinite, rainbow 3s infinite;">
+                    ¡SÍ, QUIERO! 💕
+                </button>
+                <button class="answer-btn btn-no" id="noBtn" onmouseenter="showNoComment(this)" onclick="preventNo()">
+                    No... 💔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pantalla de celebración -->
+    <div class="screen celebration-screen" id="celebrationScreen">
+        <div class="container celebration-content">
+            <h2 class="celebration-title">¡ERES EL AMOR DE MI VIDA! ❤️</h2>
+            <p class="celebration-message">
+                ¡No puedo creer que hayas dicho que sí! 🎉<br>
+                Gracias por hacerme el hombre más feliz del mundo.<br>
+                Te prometo que cada día contigo será una aventura increíble. 💕
+            </p>
+            <p style="font-size: 1.4rem; margin-bottom: 30px; font-style: italic;">
+                "Ahora entiendo por qué no funcionó con nadie más... <br>
+                El universo me estaba guardando para ti." ✨
+            </p>
+            <button class="restart-btn" onclick="restartExperience()">
+                Vivir la experiencia otra vez 🔄
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
